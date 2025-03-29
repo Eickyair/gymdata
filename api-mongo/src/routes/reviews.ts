@@ -47,8 +47,10 @@ router.put("/:id", async (req, res) => {
     const review = await Review.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-    if (!review)
-      return res.status(404).json({ message: "Reseña no encontrada" });
+    if (!review) {
+      res.status(404).json({ message: "Reseña no encontrada" });
+      return;
+    }
     res.json(review);
   } catch (error) {
     res.status(500).json({ message: "Error actualizando reseña", error });
@@ -59,8 +61,10 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const review = await Review.findByIdAndDelete(req.params.id);
-    if (!review)
-      return res.status(404).json({ message: "Reseña no encontrada" });
+    if (!review) {
+      res.status(404).json({ message: "Reseña no encontrada" });
+      return;
+    }
 
     // Actualizar datos del gimnasio
     const reviews = await Review.find({ gymId: review.gymId });

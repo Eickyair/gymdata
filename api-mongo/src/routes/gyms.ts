@@ -28,8 +28,10 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const gym = await Gym.findById(req.params.id);
-    if (!gym)
-      return res.status(404).json({ message: "Gimnasio no encontrado" });
+    if (!gym) {
+      res.status(404).json({ message: "Gimnasio no encontrado" });
+      return;
+    }
     res.json(gym);
   } catch (error) {
     res.status(500).json({ message: "Error obteniendo gimnasio", error });
@@ -44,8 +46,10 @@ router.put("/:id", async (req, res) => {
       { ...req.body, updatedAt: Date.now() },
       { new: true }
     );
-    if (!gym)
-      return res.status(404).json({ message: "Gimnasio no encontrado" });
+    if (!gym) {
+      res.status(404).json({ message: "Gimnasio no encontrado" });
+      return;
+    }
     res.json(gym);
   } catch (error) {
     res.status(500).json({ message: "Error actualizando gimnasio", error });
@@ -56,8 +60,10 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const gym = await Gym.findByIdAndDelete(req.params.id);
-    if (!gym)
-      return res.status(404).json({ message: "Gimnasio no encontrado" });
+    if (!gym) {
+      res.status(404).json({ message: "Gimnasio no encontrado" });
+      return;
+    }
     res.json({ message: "Gimnasio eliminado exitosamente" });
   } catch (error) {
     res.status(500).json({ message: "Error eliminando gimnasio", error });

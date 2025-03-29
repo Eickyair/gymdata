@@ -18,8 +18,10 @@ router.post("/register", async (req, res) => {
       role,
     } = req.body;
     const existingUser = await User.findOne({ email });
-    if (existingUser)
-      return res.status(400).json({ message: "El email ya está registrado" });
+    if (existingUser) {
+      res.status(400).json({ message: "El email ya está registrado" });
+      return;
+    }
 
     const passwordHash = password ? await bcrypt.hash(password, 10) : undefined;
     const user = new User({
@@ -45,13 +47,16 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    if (!user)
-      return res.status(404).json({ message: "Usuario no encontrado" });
-
+    if (!user) {
+      res.status(404).json({ message: "Usuario no encontrado" });
+      return;
+    }
     if (user.provider === "local") {
       const isMatch = await bcrypt.compare(password, user.passwordHash || "");
-      if (!isMatch)
-        return res.status(400).json({ message: "Credenciales inválidas" });
+      if (!isMatch) {
+        res.status(400).json({ message: "Credenciales inválidas" });
+        return;
+      }
     }
 
     // Generar token JWT
