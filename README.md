@@ -1,2 +1,13 @@
 # gymdata
 En la actualidad, la oferta de gimnasios en la Ciudad de México es amplia, pero la información disponible para los usuarios es dispersa, poco confiable y no está centralizada. Nuestro proyecto busca cambiar esta situación mediante el desarrollo de una base de datos NoSQL robusta y una aplicación intuitiva que centralice información clave de gimnasios en la CDMX.
+
+## Funcionalidades Basicas
+- Cada usuario será capaz de consultar los gimnasios cercanos dada la ubicación del dispositivo o incluso cuando se proponga una ubicación específica dentro del territorio. Al proporcionar esta ubicación se podrán consultar las siguientes características de los gimnasios que estén en un radio de 2 km: Nombre, descripción, dirección , ubicación, precio, actividades , servicios, imágenes contacto(teléfono, correo, pagina web, redes sociales), Dueño del gimnasio, Fechas de apertura y por ultimo la sección de comentarios.
+- Estos comentarios o reseñas serán proporcionados por los usuarios y serán de acuerdo al gimnasio visitado, dicha reseña contendrá los siguientes aspectos: nombre del gimnasio, usuario que realizó la reseña, puntuación del 1 al 5, comentario de max 100 caracteres que refeje la experiencia, imágenes si es que hay y por supuesto la fecha en la que se realice la reseña.
+- Se manejara un sistema de niveles en las que los usuarios iran subiendo dependiendode  cuantas reseñas hagan y la completitud de campos que proporcionen en sus comentarios.
+- A la hora de iniciar la aplicación, se podrá crear la cuenta como usuario o dueño del gimnasio. Como Dueño del gimnasio, se podrá modificar loa atributos correspondientes mencionados con anterioridad a excepción de la parte de los comentarios. Las funcionalidades más importantes serán orientadas al usuario el cual tendrá dos funcionalidades principales: 
+### Búsqueda de gimnasios
+Al usuario se le preguntará si desea ingresar su ubicación actual o si desea ingresar otra ubicación. Después de esto, se le mostrarán los gimnasios que estén a dos km de radio de la ubicación proporcionada. En orden de prioridad, se mostrarán primero los gimnasios que tengan mejor puntuación de acuerdo a las reseñas/comentarios proporcionados. Se desplegará toda la información referente a cualquier gimnasio que se seleccione. Ubicación , mensualidad, comentarios , etc. 
+### Hacer reseña
+Al seleccionar un gimnasio , solo a los usuarios se les presentará la opción de hacer una reseña la cual llevará todos los campos ya antes mencionados. La prioridad de aparición de comentarios en un gimnasio será de acuerdo al perfil de los usuarios, si tienes muchas reseñas hechas tu comentario aparecerá lo correspondiente en prioridad.
+
